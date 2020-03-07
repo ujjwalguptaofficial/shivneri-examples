@@ -23,10 +23,10 @@ module Rest
       @[Worker("POST")]
       @[Route("/")]
       @[Inject("as_body")]
-      @[ExpectBody(NamedTuple(id: Int32, name: String, gender: String))]
+      @[ExpectBody(User)]
       @[Guards(UserValidator)]
       def add_user(user)
-        user = @user_service.add_user(User.new(user))
+        user = @user_service.add_user(user)
         return json_result(user, 201)
       end
 
@@ -45,10 +45,10 @@ module Rest
       @[Worker("PUT")]
       @[Route("/")]
       @[Inject("as_body")]
-      @[ExpectBody(NamedTuple(id: Int32, name: String, gender: String))]
+      @[ExpectBody(User)]
       @[Guards(UserValidator)]
       def update_user(user)
-        if (@user_service.update_user(User.new(user)))
+        if (@user_service.update_user(user))
           return text_result("user updated")
         else
           return text_result("invalid user")

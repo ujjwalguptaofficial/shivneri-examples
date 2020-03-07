@@ -11,9 +11,9 @@ module Rest
       end
 
       def validate(user)
-        if (user[:name].size < 5)
+        if (user.name.size < 5)
           return "name should be minimum 5 characters"
-        elsif (!["male", "female"].includes? user[:gender])
+        elsif (!["male", "female"].includes? user.gender)
           return "gender should be either male or female"
         end
         return ""
