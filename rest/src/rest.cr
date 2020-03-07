@@ -4,7 +4,6 @@ require "./guards/all"
 require "./services/all"
 require "./models/all"
 
-# include Shivneri
 include Rest
 
 # TODO: Write documentation for `Rest`
