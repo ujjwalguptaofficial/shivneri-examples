@@ -1,0 +1,17 @@
+name: shivneri-demo
+version: 0.1.0
+
+authors:
+  - Ujjwal Gupta <ujjwalkumargupta44@gmail.com>
+
+targets:
+  shivneri-demo:
+    main: src/shivneri-demo.cr
+
+dependencies:
+  shivneri:
+    github: ujjwalguptaofficial/shivneri
+
+crystal: 0.33.0
+
+license: MIT

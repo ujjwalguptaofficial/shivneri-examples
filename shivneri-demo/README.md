@@ -1,24 +1,12 @@
-# res-st
+# shivneri-demo
 
 TODO: Write a description here
 
 ## Installation
 
-1. Add the dependency to your `shard.yml`:
-
-   ```yaml
-   dependencies:
-     res-st:
-       github: your-github-user/res-st
-   ```
-
-2. Run `shards install`
+TODO: Write installation instructions here
 
 ## Usage
-
-```crystal
-require "res-st"
-```
 
 TODO: Write usage instructions here
 
@@ -28,7 +16,7 @@ TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/res-st/fork>)
+1. Fork it (<https://github.com/your-github-user/shivneri-demo/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

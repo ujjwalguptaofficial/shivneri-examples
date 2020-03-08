@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe Res::St do
+describe Shivneri::Demo do
   # TODO: Write tests
 
   it "works" do
