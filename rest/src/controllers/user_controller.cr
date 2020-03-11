@@ -3,11 +3,8 @@ require "../services/all"
 require "../models/all"
 
 module Rest
-  include GUARD
-  include Service
-  include Model
-
   module Controller
+    # create a instance of UserService and inject in UserController
     @[Inject(instance(UserService))]
     class UserController < Shivneri::Controller
       @user_service : UserService
@@ -51,7 +48,7 @@ module Rest
         if (@user_service.update_user(user))
           return text_result("user updated")
         else
-          return text_result("invalid user")
+          return text_result("invalid user", 404)
         end
       end
 

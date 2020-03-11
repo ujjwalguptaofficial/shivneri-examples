@@ -1,5 +1,5 @@
 module Rest
-  module GUARD
+  module Guard
     class UserValidator < Shivneri::Guard
       @[Inject("as_body")]
       @[BodySameAs("UserController", "add_user")]

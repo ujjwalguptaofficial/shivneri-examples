@@ -1,6 +1,6 @@
 require "./controllers/all"
 
-module Rest
+module Authentication
   def self.routes
     return [
       {

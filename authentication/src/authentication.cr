@@ -1,13 +1,10 @@
 require "shivneri"
 require "./routes"
-require "./guards/all"
-require "./services/all"
-require "./models/all"
 
-include Rest
+# TODO: Write documentation for `Authentication`
+include Authentication
 
-# TODO: Write documentation for `Rest`
-module Rest
+module Authentication
   VERSION = "0.1.0"
 
   Shivneri.routes = routes

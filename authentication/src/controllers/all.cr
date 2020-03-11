@@ -1,6 +1,6 @@
 require "./default_controller"
 require "./user_controller"
 
-module Rest
+module Authentication
   include Controller
 end
