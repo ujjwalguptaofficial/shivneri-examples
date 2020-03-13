@@ -1,18 +1,16 @@
 # request-logger
 
-TODO: Write a description here
+This is an example of how to use walls in Shivneri. This example does following things - 
 
-## Installation
+* logs when request comes & when request goes
+* maintains a request counter which can be accessed in any components - wall, shield, guard & controller
 
-TODO: Write installation instructions here
+Wall code is in src/walls & controller code is in src/controllers
 
-## Usage
+# How to run
 
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
+* run command - `shards install`
+* run command - `crystal run src/request-logger.cr`
 
 ## Contributing
 
