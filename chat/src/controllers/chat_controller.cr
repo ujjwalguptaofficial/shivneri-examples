@@ -6,17 +6,14 @@ module Chat
         # add current client to a group
         clients.groups.add(group_name)
 
-        # send message to a group except caller
-        clients.groups.except_me("big_bang").emit("from_group_big_bang", "someone has joined")
-
-        # send message to me
+        # send message to caller
         clients.current.emit("message", "Welcome to the group")
       end
 
       @[Event]
-      def to_big_bang(message : String)
+      def to_big_bang(data : NamedTuple(from: String, message: String))
         # send message to a group except caller
-        clients.groups.except_me("big_bang").emit("from_group_big_bang", message)
+        clients.groups.except_me("big_bang").emit("from_group_big_bang", data)
       end
 
       def connected

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Socket.IO chat</title>
+    <title>Shivneri chat</title>
     <style>
         * {
             margin: 0;
@@ -61,35 +61,40 @@
     <script src="https://cdn.jsdelivr.net/npm/shivneri-ws-client@1.0.0/dist/shivneri-ws_client.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
+        var name = "";
         var socket = new shivneriWsClient.Instance();
-        socket.on("from_group_big_bang", (msg) => {
-            sendMessage(`received from big bang: ${msg}`)
+        socket.on("from_group_big_bang", (data) => {
+            writeMessage(`${data.from} : ${data.message}`)
         })
         socket.on("message", (msg) => {
-            sendMessage(`received : ${msg}`)
+            writeMessage(`System : ${msg}`)
         })
 
         socket.onDisconnect = () => {
-            sendMessage("Disconneted", "red")
+            writeMessage("Disconneted", "red")
         }
 
         socket.onError = (evt) => {
-            sendMessage(evt.data, "red")
+            writeMessage(evt.data, "red")
         }
         window.onload = async function () {
             await socket.init(`${location.host}/chat`);
-            sendMessage("Conneted", "green")
+            writeMessage("Conneted", "green")
+            name = prompt("Enter your name");
             socket.emit("join_group", "big_bang")
         };
 
         $('#btnSend').click(function () {
             var msg = $('#m').val();
-            sendMessage(`sent : ${msg}`)
-            socket.emit('to_big_bang', msg);
+            socket.emit('to_big_bang', {
+                from: name,
+                message: msg
+            });
             $('#m').val('');
+            writeMessage(`me : ${msg}`)
         });
 
-        function sendMessage(message, color) {
+        function writeMessage(message, color) {
             $('#messages').append(`<li style="color:${color || 'blue'}"> ${message} </li>`)
         }
     </script>
