@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Socket.IO chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font: 13px Helvetica, Arial;
+        }
+
+        div {
+            background: #000;
+            padding: 3px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        div input {
+            border: 0;
+            padding: 10px;
+            width: 90%;
+            margin-right: .5%;
+        }
+
+        div button {
+            width: 9%;
+            background: rgb(130, 224, 255);
+            border: none;
+            padding: 10px;
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #messages li {
+            padding: 5px 10px;
+        }
+
+        #messages li:nth-child(odd) {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="messages"></ul>
+    <div>
+        <input id="m" autocomplete="off" />
+        <button id="btnSend">Send</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/shivneri-ws-client@1.0.0/dist/shivneri-ws_client.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        var socket = new shivneriWsClient.Instance();
+        socket.on("from_group_big_bang", (msg) => {
+            sendMessage(`received from big bang: ${msg}`)
+        })
+        socket.on("message", (msg) => {
+            sendMessage(`received : ${msg}`)
+        })
+
+        socket.onDisconnect = () => {
+            sendMessage("Disconneted", "red")
+        }
+
+        socket.onError = (evt) => {
+            sendMessage(evt.data, "red")
+        }
+        window.onload = async function () {
+            await socket.init(`${location.host}/chat`);
+            sendMessage("Conneted", "green")
+            socket.emit("join_group", "big_bang")
+        };
+
+        $('#btnSend').click(function () {
+            var msg = $('#m').val();
+            sendMessage(`sent : ${msg}`)
+            socket.emit('to_big_bang', msg);
+            $('#m').val('');
+        });
+
+        function sendMessage(message, color) {
+            $('#messages').append(`<li style="color:${color || 'blue'}"> ${message} </li>`)
+        }
+    </script>
+</body>
+
+</html>
