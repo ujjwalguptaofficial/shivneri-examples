@@ -58,12 +58,12 @@
         <input id="m" autocomplete="off" />
         <button id="btnSend">Send</button>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/shivneri-ws-client@1.0.0/dist/shivneri-ws_client.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/shivneri-ws-client@1.0.0/dist/shivneri-ws-client.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
         var name = "";
         var socket = new shivneriWsClient.Instance();
-        socket.on("from_group_big_bang", (data) => {
+        socket.on("big-bang", (data) => {
             writeMessage(`${data.from} : ${data.message}`)
         })
         socket.on("message", (msg) => {
@@ -81,12 +81,12 @@
             await socket.init(`${location.host}/chat`);
             writeMessage("Conneted", "green")
             name = prompt("Enter your name");
-            socket.emit("join_group", "big_bang")
+            socket.emit("join-group", "big-bang")
         };
 
         $('#btnSend').click(function () {
             var msg = $('#m').val();
-            socket.emit('to_big_bang', {
+            socket.emit('big-bang', {
                 from: name,
                 message: msg
             });
