@@ -13,7 +13,7 @@ module Chat
       @[On("big-bang")]
       def to_big_bang(data : NamedTuple(from: String, message: String))
         # send message to a group except caller
-        clients.groups.except_me("big-bang").emit("big-bang", data)
+        clients.except_me.groups["big-bang"].emit("big-bang", data)
       end
 
       def connected
