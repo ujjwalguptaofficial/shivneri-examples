@@ -5,16 +5,16 @@ module File::Server
 
   Shivneri.folders = [
     {
-      path_alias: "/",
-      path:       File.join(Dir.current, "my_files"),
+      path:   "/",
+      folder: File.join(Dir.current, "my_files"),
     },
     {
-      path_alias: "static",
-      path:       File.join(Dir.current, "static"),
+      path:   "/static",
+      folder: File.join(Dir.current, "static"),
     },
     {
-      path_alias: "files",
-      path:       File.join(Dir.current, "my_files"),
+      path:   "/files",
+      folder: File.join(Dir.current, "my_files"),
     },
   ]
 

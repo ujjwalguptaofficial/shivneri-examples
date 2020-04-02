@@ -1,30 +1,30 @@
 # file-server
 
-This is a demo of how to server files in Shivneri framework
+This is a demo of how to serve files in Shivneri framework
 
 Below code in file src/file-server.cr contains code for exposing files 
 
 ```
 Shivneri.folders = [
     {
-      path_alias: "/",
-      path:       File.join(Dir.current, "my_files"),
+      path: "/",
+      folder:  File.join(Dir.current, "my_files"),
     },
     {
-      path_alias: "static",
-      path:       File.join(Dir.current, "static"),
+      path: "/static",
+      folder:  File.join(Dir.current, "static"),
     },
     {
-      path_alias: "files",
-      path:       File.join(Dir.current, "my_files"),
+      path: "/files",
+      folder:  File.join(Dir.current, "my_files"),
     },
 ]
 ```
 
-From the above code, we are exposing different folders
+From the above code, we are exposing three folders
 
-* First folder exposed is "my_files" from root folder of this project with path alias "/". It means when route will be "/", it will serve files from "my_files" folder.
-* Second folder exposed is "static" from root folder of this project with path alias "static". It means when route will be "/static", it will serve files from "static" folder.
+* First folder exposed is "my_files" from root folder of this project with path "/". It means when route will be "/", it will serve files from "my_files" folder.
+* Second folder exposed is "static" from root folder of this project with path "static". It means when route will be "/static", it will serve files from "static" folder.
 * Third is same as first except alias is "files".
 
 ## How to run
