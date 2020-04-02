@@ -7,8 +7,8 @@ module Chat
 
   Shivneri.routes = routes
   Shivneri.folders = [{
-    path_alias: "/",
-    path:       File.join(Dir.current, "static"),
+    path:   "/",
+    folder: File.join(Dir.current, "static"),
   }]
   Shivneri.open do
     puts "app is started"

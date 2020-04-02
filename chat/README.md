@@ -1,18 +1,16 @@
 # chat
 
-TODO: Write a description here
+This is a demo of a simple real time chat app in Shivneri framework. Client and server communicates through web socket.
 
-## Installation
+WebSocket server code is inside chat_controller.cr and client is in folder static.
 
-TODO: Write installation instructions here
+## How to run
 
-## Usage
+* run command - shards install
+* run command - crystal run src/chat.cr
 
-TODO: Write usage instructions here
+You can test by visiting urls - http://localhost:4000/chat.html . Open the link in two tabs and you can chat with each other.
 
-## Development
-
-TODO: Write development instructions here
 
 ## Contributing
 
